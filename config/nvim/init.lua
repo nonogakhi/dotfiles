@@ -6,33 +6,6 @@ end
 
 return {
   colorscheme = colorscheme,
-
-  plugins = {
-    init = {
-      -- Colorscheme
-      {
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function()
-          require("catppuccin").setup {}
-        end,
-      },
-      -- Font for icons
-      {
-        "yamatsum/nvim-nonicons",
-         requires = {"kyazdani42/nvim-web-devicons"}
-      }
-    },
-    lualine = {
-      options = {
-        theme = "catppuccin",
-      }
-    },
-    ["neo-tree"] = {
-      window = {
-        position = "right",
-        width = 35,
-      }
-    }
-  },
+  enabled = require "user.core.default_plugins",
+  plugins = require "user.plugins.plugins",
 }
