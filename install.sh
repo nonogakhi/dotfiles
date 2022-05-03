@@ -131,7 +131,7 @@ setup_penetration_tools() {
   fi
 }
 
-setup_performance_testing_tools()) {
+setup_performance_testing_tools() {
   read -r -p "Do you want to install some performance testing tools ? [y|N] " response
   if [[ $response =~ (y|yes|Y) ]];then
     brew install artillery
@@ -355,10 +355,12 @@ link_all_dotfiles() {
   rm -rf ~/.zshrc
   rm -rf ~/.config/skhd
   rm -rf ~/.config/bpytop
+  rm -rf ~/.config/yabai
 
   mkdir -p ~/.config/fish
   mkdir -p ~/.config/wezterm
   mkdir -p ~/.config/neofetch
+  mkdir -p ~/.config/yabai
 
   cd ~/.dotfiles/config && \
     stow alacritty -t ~/.config && \
@@ -370,12 +372,17 @@ link_all_dotfiles() {
   success "Linked all configurations"
 
   mkdir -p ~/.config/skhd
-  cd ~/.dotfiles/config && stow skhd -t ~/.config/skhd
+  cd ~/.dotfiles/config && \
+    stow skhd -t ~/.config/skhd && \
+    stow yabai -t ~/.config/yabai
+  chmod +x ~/.config/yabai/yabairc
   success "Linked window manager"
 
   mkdir -p ~/.config/nvim/lua/user
   cd ~/.dotfiles/config && stow nvim -t ~/.config/nvim/lua/user
   success "Linked neovim"
+
+ 
 
   mkdir -p ~/.config/bpytop
   cd ~/.dotfiles/config && stow bpytop -t ~/.config/bpytop

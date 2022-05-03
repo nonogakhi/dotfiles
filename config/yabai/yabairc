@@ -1,0 +1,114 @@
+#!/usr/bin/env sh
+
+# See: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#macos-big-sur---automatically-load-scripting-addition-on-startup
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+
+# global settings
+yabai -m config window_border              on
+yabai -m config mouse_follows_focus        off
+yabai -m config focus_follows_mouse        off
+yabai -m config window_placement           second_child
+yabai -m config window_topmost             off
+yabai -m config window_shadow              float
+yabai -m config window_opacity             on
+yabai -m config active_window_opacity      1.0
+yabai -m config normal_window_opacity      0.95
+yabai -m config window_border_width        3
+yabai -m config active_window_border_color 0xff9dd274 # 0x99ecf0c1
+yabai -m config normal_window_border_color 0xff555555 # 0x99555555
+yabai -m config insert_feedback_color      0xff9dd274 # 0x99FF4250
+yabai -m config split_ratio                0.50
+yabai -m config auto_balance               off
+yabai -m config mouse_modifier             fn
+yabai -m config mouse_action1              move
+yabai -m config mouse_action2              resize
+yabai -m config mouse_drop_action          swap
+
+# general space settings
+yabai -m config layout                     bsp
+yabai -m config top_padding                7
+yabai -m config bottom_padding             7
+yabai -m config left_padding               7
+yabai -m config right_padding              7
+yabai -m config window_gap                 7
+
+# menu status bar (simple-bar)
+yabai -m config external_bar               all:30:0
+
+## spaces managements
+# naming
+yabai -m space 1 --label code
+yabai -m space 2 --label web
+yabai -m space 3 --label social
+yabai -m space 4 --label tool
+yabai -m space 5 --label music
+yabai -m space 6 --label doc
+yabai -m space 7 --label baduk
+yabai -m space 8 --label misc
+
+# space: code
+yabai -m rule --add app="^kitty$" space=code
+yabai -m rule --add app="^Alacritty$" space=code
+yabai -m rule --add app="^Wezterm$" space=code
+
+# space: web
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off space=web
+yabai -m rule --add app="^Google Chrome$" space=web
+yabai -m rule --add app="^Firefox$" space=web
+yabai -m rule --add app="^Min$" space=web
+yabai -m rule --add app="^Brave Browser$" space=web
+
+# space: tool
+yabai -m rule --add app="^Visual Studio Code$" space=tool
+yabai -m rule --add app="^Sublime Text$" space=tool
+yabai -m rule --add app="^Postman$" manage=off space=tool
+yabai -m rule --add app="^Insomnia" manage=off space=tool
+yabai -m rule --add app="^Beekeeper Studio$" manage=off space=tool
+yabai -m rule --add app="^Numi$" manage=off space=tool
+
+# space: social
+yabai -m rule --add app="^Slack$" space=social
+yabai -m rule --add app="^Skype$" space=social
+yabai -m rule --add app="^Messenger$" space=social
+yabai -m rule --add app="^Telegram$" space=social
+yabai -m rule --add app="^Zalo$" space=social
+yabai -m rule --add app="^Discord$" manage=off space=social
+yabai -m rule --add app="^zoom.us$" manage=off space=social
+yabai -m rule --add app="^Microsoft Teams$" manage=off space=social
+yabai -m rule --add app="^Microsoft Outlook$" manage=off space=social
+
+# space: music
+yabai -m rule --add app="^Spotify$" manage=off space=music
+yabai -m rule --add app="^VOX$" manage=off space=music
+yabai -m rule --add app="^VLC$" manage=off space=music
+
+# space: doc
+yabai -m rule --add app="^Microsoft Word$" manage=off space=doc
+yabai -m rule --add app="^Microsoft Excel$" manage=off space=doc
+yabai -m rule --add app="^Numbers$" manage=off space=doc
+yabai -m rule --add app="^Preview$" manage=off space=doc
+
+# space: baduk
+yabai -m rule --add app="^CGoban$" manage=off space=baduk
+yabai -m rule --add app="^Tygem$" manage=off space=baduk
+yabai -m rule --add app="^GoPanda2$" manage=off space=baduk
+
+# space: misc
+yabai -m rule --add label="AppCleaner" app="^AppCleaner$" opacity=1 manage=off space=misc
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off space=misc
+yabai -m rule --add label="System Preferences" app="^System Preferences$" manage=off space=misc
+yabai -m rule --add label="App Store" app="^App Store$" manage=off space=misc
+yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off space=misc
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off space=misc
+yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off space=misc
+yabai -m rule --add label="Software Update" title="Software Update" manage=off space=misc
+yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off space=misc
+yabai -m rule --add app="^Archive Utility$" manage=off space=misc
+yabai -m rule --add app="^Photo Booth$" manage=off space=misc
+yabai -m rule --add app="^QuickTime Player$" manage=off space=misc
+
+echo "yabai configuration loaded.."
