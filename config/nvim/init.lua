@@ -1,6 +1,6 @@
 return {
-  colorscheme = pcall(require, "nightfox") and "duskfox" or "default_theme",
-  lsp = require "users.lsp",
+  colorscheme = "duskfox",
+  lsp = require "user.lsp",
 
   cmp = {
     source_priority = {
@@ -16,8 +16,7 @@ return {
   },
 
   polish = function()
-    require "users.options"
-    require "users.autocmds"
-    require "users.mappings"
+    require "user.autocmds"
+    require "user.mappings"
   end,
 }
