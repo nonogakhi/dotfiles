@@ -1,6 +1,5 @@
 return {
   colorscheme = "duskfox",
-  lsp = require "user.lsp",
 
   cmp = {
     source_priority = {
