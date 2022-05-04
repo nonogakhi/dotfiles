@@ -42,7 +42,6 @@ if cmp_ok and luasnip_ok then
           luasnip = "LuaSnip",
           nvim_lua = "Lua",
           latex_symbols = "LaTeX",
-          cmp_tabnine = "Tabnine",
           path = "Path",
           emoji = "Emoji",
         })[entry.source.name]
