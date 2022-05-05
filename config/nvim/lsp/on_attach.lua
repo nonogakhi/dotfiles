@@ -4,7 +4,8 @@ return function(client, bufnr)
   end
 
   if client.name == "solargraph" and vim.o.filetype == "ruby" then
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
   end
 
   -- Enable completion triggered by <c-x><c-o>
