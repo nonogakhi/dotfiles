@@ -9,7 +9,6 @@ return {
     },
     modules = {
       barbar = false,
-      dashboard = false,
       fern = false,
       fidget = false,
       gitgutter = false,
@@ -35,7 +34,7 @@ return {
         green = "green",
         red = "red",
       },
-    },
+   },
   },
   groups = {
     HighlightURL = { style = "underline" },

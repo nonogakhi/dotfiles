@@ -7,6 +7,8 @@ vim.keymap.del("n", "<C-q>")
 vim.keymap.del("n", "<C-s>")
 vim.keymap.del("v", "<")
 vim.keymap.del("v", ">")
+vim.keymap.del("t", "<esc>")
+vim.keymap.del("t", "jk")
 vim.keymap.del("n", "<leader>c")
 vim.keymap.del("n", "<leader>h")
 if require("core.utils").is_available "nvim-toggleterm.lua" then
@@ -14,9 +16,6 @@ if require("core.utils").is_available "nvim-toggleterm.lua" then
 end
 if require("core.utils").is_available "telescope.nvim" then
   vim.keymap.del("n", "<leader>fh")
-  vim.keymap.del("n", "<leader>fm")
-  vim.keymap.del("n", "<leader>fn")
-  vim.keymap.del("n", "<leader>fo")
   vim.keymap.del("n", "<leader>sb")
   vim.keymap.del("n", "<leader>sc")
   vim.keymap.del("n", "<leader>sh")
@@ -66,6 +65,10 @@ end
 vim.keymap.set("i", "<c-x><c-o>", function()
   require("cmp").complete { config = { sources = { { name = "nvim_lsp" } } } }
 end, { desc = "Complete LSP" })
+
+-- terminal mappings
+vim.keymap.set("t", "<leader><esc>", "<c-\\><c-n>", { desc = "Terminal normal mode" })
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>:q<cr>", { desc = "Terminal quit" })
 
 -- Treesitter Surfer
 vim.keymap.set("x", "J", function()
