@@ -1,6 +1,6 @@
 return {
   -- Disable default plugins
-  ["karb94/neoscroll.nvim"] = { disable = true },
+  ["declancm/cinnamon.nvim"] = { disable = true },
   ["max397574/better-escape.nvim"] = { disable = true },
   ["lukas-reineke/indent-blankline.nvim"] = { disable = true },
   ["numToStr/Comment.nvim"] = { disable = true },

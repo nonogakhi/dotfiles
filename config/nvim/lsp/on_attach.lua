@@ -12,10 +12,8 @@ return function(client, bufnr)
 
   -- Format on save
   if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_create_augroup("autoformat", { clear = true })
     vim.api.nvim_create_autocmd("BufWritePre", {
       desc = "Auto format before save",
-      group = "autoformat",
       pattern = "<buffer>",
       callback = vim.lsp.buf.formatting_sync,
     })
