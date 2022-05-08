@@ -23,7 +23,6 @@ return {
         utils.alpha_button("LDR f w", "  Find Word  "),
         utils.alpha_button("LDR f p", "  Projects  "),
         utils.alpha_button("LDR f n", "  New File  "),
-        utils.alpha_button("LDR f m", "  Bookmarks  "),
         utils.alpha_button("LDR S l", "  Last Session  "),
       },
       opts = {
