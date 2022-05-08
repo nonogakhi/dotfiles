@@ -1,17 +1,3 @@
-local function vim_opt_toggle(opt, on, off, name)
-  return function()
-    local message = name
-    if vim.opt[opt]._value == off then
-      vim.opt[opt] = on
-      message = message .. " Enabled"
-    else
-      vim.opt[opt] = off
-      message = message .. " Disabled"
-    end
-    vim.notify(message, "info", require("core.utils").base_notification)
-  end
-end
-
 return {
   ["<leader>"] = {
     ["c"] = { "<cmd>Bdelete!<CR>", "Bye Buffer" },
