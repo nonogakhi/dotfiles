@@ -61,11 +61,6 @@ for _, char in ipairs { "_", ".", ":", ",", ";", "|", "/", "\\", "*", "+", "%", 
   end
 end
 
--- cmp lsp auto complete
-vim.keymap.set("i", "<c-x><c-o>", function()
-  require("cmp").complete { config = { sources = { { name = "nvim_lsp" } } } }
-end, { desc = "Complete LSP" })
-
 -- terminal mappings
 vim.keymap.set("t", "<leader><esc>", "<c-\\><c-n>", { desc = "Terminal normal mode" })
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>:q<cr>", { desc = "Terminal quit" })
