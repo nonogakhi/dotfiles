@@ -19,6 +19,7 @@ return function()
     "cursorword",
     "doc",
     "fuzzy",
+    "jump2d",
     "misc",
     "pairs",
     "sessions",

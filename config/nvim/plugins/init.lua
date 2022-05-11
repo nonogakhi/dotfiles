@@ -25,7 +25,7 @@ return {
   },
   {
     "andymass/vim-matchup", -- highlight, navigate, and operate on sets of matching text
-    opt = true,
+    after = "nvim-treesitter",
     setup = function()
       require("core.utils").defer_plugin "vim-matchup"
     end,
@@ -86,10 +86,6 @@ return {
   },
   {
     "phaazon/hop.nvim",
-    opt = true,
-    setup = function()
-      require("core.utils").defer_plugin "hop.nvim"
-    end,
     branch = "v1",
     cmd = {
       "HopChar1CurrentLine",
