@@ -5,8 +5,7 @@ if status_ok then
   local builtins = null_ls.builtins
   local on_attach = require "user.lsp.on_attach"
 
-  null_ls.setup {
-    debug = true,
+  return {
     sources = {
       -- Completion
       builtins.completion.spell,
