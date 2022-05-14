@@ -3,7 +3,6 @@
 local status_ok, null_ls = pcall(require, "null-ls")
 if status_ok then
   local builtins = null_ls.builtins
-  local on_attach = require "user.lsp.on_attach"
 
   return {
     sources = {
@@ -32,6 +31,15 @@ if status_ok then
       -- Hover
       builtins.hover.dictionary,
     },
-    on_attach = on_attach,
+    on_attach = function(client)
+      -- Format on save
+      if client.resolved_capabilities.document_formatting then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          desc = "Auto format before save",
+          pattern = "<buffer>",
+          callback = vim.lsp.buf.formatting_sync,
+        })
+      end
+    end,
   }
 end
