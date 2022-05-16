@@ -69,7 +69,7 @@ end
 map("t", "<leader><esc>", "<c-\\><c-n>", { desc = "Terminal normal mode" })
 map("t", "<esc><esc>", "<c-\\><c-n>:q<cr>", { desc = "Terminal quit" })
 
--- Treesitter Surfer
+-- treesitter surfer
 map("x", "J", function()
   require("syntax-tree-surfer").surf("next", "visual")
 end, { desc = "Surf next tree-sitter object" })

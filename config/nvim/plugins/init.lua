@@ -41,12 +41,13 @@ return {
   },
 
   -- Markdown preview
-  ["ellisonleao/glow.nvim"] = {
-    cmd = "Glow",
-    module = "glow",
-    setup = function()
-      vim.g.glow_border = "rounded"
+  ["iamcco/markdown-preview.nvim"] = {
+    run = function()
+      vim.fn["mkdp#util#install"](0)
     end,
+    ft = {
+      "markdown",
+    },
   },
 
   -- Reopen files at last edit position
@@ -100,6 +101,7 @@ return {
       require("hop").setup()
     end,
   },
+
   ["nvim-treesitter/nvim-treesitter-textobjects"] = { after = "nvim-treesitter" },
 
   ["nvim-telescope/telescope-file-browser.nvim"] = {
@@ -135,4 +137,27 @@ return {
   },
 
   ["ziontee113/syntax-tree-surfer"] = { module = "syntax-tree-surfer" },
+
+  ["klen/nvim-test"] = {
+    cmd = {
+      "TestSuite",
+      "TestFile",
+      "TestNearest",
+      "TestLast",
+      "TestVisit",
+      "TestEdit",
+    },
+    config = function()
+      require("nvim-test").setup(require "user.plugins.nvim-test")
+    end,
+  },
+
+  ["brymer-meneses/grammar-guard.nvim"] = {
+    ft = {
+      "markdown",
+    },
+    config = function()
+      require("grammar-guard").init()
+    end,
+  },
 }

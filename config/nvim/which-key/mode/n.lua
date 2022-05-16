@@ -14,5 +14,10 @@ return {
       F = { "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", "All Files" },
       p = { "<cmd>Telescope project<cr>", "Projects" },
     },
+
+    m = {
+      name = "Markdown",
+      p = { ":MarkdownPreviewToggle<CR>", "Toggle Preview" },
+    },
   },
 }

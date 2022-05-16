@@ -16,7 +16,6 @@ if status_ok then
       },
       -- Linters
       builtins.diagnostics.rubocop, -- Ruby
-      builtins.diagnostics.write_good, -- Markdown
       builtins.diagnostics.tsc, -- Typescript
       builtins.diagnostics.shellcheck.with {
         diagnostics_format = "#{m} [#{c}]",

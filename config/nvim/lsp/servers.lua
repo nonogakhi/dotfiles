@@ -2,7 +2,7 @@ return {
   "sumneko_lua", -- Lua
   "tsserver", -- Typescript
   "jsonls", -- Json
-  "texlab", -- Latex
+  "ltex", -- Latex/Markdown
   "yamlls", -- Yaml
   "gopls", -- Golang
   "pyright", -- Python
