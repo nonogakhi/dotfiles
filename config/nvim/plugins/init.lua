@@ -160,4 +160,10 @@ return {
       require("grammar-guard").init()
     end,
   },
+
+  ["akinsho/git-conflict.nvim"] = {
+    config = function()
+      require("git-conflict").setup(require "user.plugins.git-conflict")
+    end,
+  },
 }
