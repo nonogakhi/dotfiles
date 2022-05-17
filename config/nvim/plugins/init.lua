@@ -152,15 +152,6 @@ return {
     end,
   },
 
-  ["brymer-meneses/grammar-guard.nvim"] = {
-    ft = {
-      "markdown",
-    },
-    config = function()
-      require("grammar-guard").init()
-    end,
-  },
-
   ["akinsho/git-conflict.nvim"] = {
     config = function()
       require("git-conflict").setup(require "user.plugins.git-conflict")
