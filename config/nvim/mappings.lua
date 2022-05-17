@@ -13,7 +13,6 @@ unmap("v", "<")
 unmap("v", ">")
 unmap("t", "<esc>")
 unmap("t", "jk")
-unmap("n", "<leader>c")
 unmap("n", "<leader>h")
 if is_available "nvim-toggleterm.lua" then
   unmap("n", "<C-\\>")
