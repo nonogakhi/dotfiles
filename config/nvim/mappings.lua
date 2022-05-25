@@ -14,9 +14,6 @@ unmap("v", ">")
 unmap("t", "<esc>")
 unmap("t", "jk")
 unmap("n", "<leader>h")
-if is_available "nvim-toggleterm.lua" then
-  unmap("n", "<C-\\>")
-end
 if is_available "telescope.nvim" then
   unmap("n", "<leader>fh")
   unmap("n", "<leader>sb")
