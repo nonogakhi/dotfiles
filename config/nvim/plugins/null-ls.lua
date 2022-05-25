@@ -7,7 +7,7 @@ if status_ok then
   return {
     sources = {
       -- Completion
-      builtins.completion.spell,
+      -- builtins.completion.spell,
       -- Formatting
       builtins.formatting.stylua, -- Lua
       builtins.formatting.shfmt, -- Shell

@@ -58,6 +58,7 @@ return {
     end,
   },
 
+  -- Distraction-free coding
   ["folke/zen-mode.nvim"] = {
     cmd = "ZenMode",
     module = "zen-mode",
@@ -66,6 +67,7 @@ return {
     end,
   },
 
+  -- nvim-cmp source for emoji
   ["hrsh7th/cmp-emoji"] = {
     after = "nvim-cmp",
     config = function()
@@ -89,21 +91,7 @@ return {
     end,
   },
 
-  ["nanotee/sqls.nvim"] = { module = "sqls" },
-
-  ["phaazon/hop.nvim"] = {
-    branch = "v1",
-    cmd = {
-      "HopChar1CurrentLine",
-      "HopChar2",
-    },
-    config = function()
-      require("hop").setup()
-    end,
-  },
-
-  ["nvim-treesitter/nvim-treesitter-textobjects"] = { after = "nvim-treesitter" },
-
+  -- extensions for telescope.nvim
   ["nvim-telescope/telescope-file-browser.nvim"] = {
     after = "telescope.nvim",
     module = "telescope._extensions.file_browser",
@@ -111,7 +99,6 @@ return {
       require("telescope").load_extension "file_browser"
     end,
   },
-
   ["nvim-telescope/telescope-hop.nvim"] = {
     after = "telescope.nvim",
     module = "telescope._extensions.hop",
@@ -119,7 +106,6 @@ return {
       require("telescope").load_extension "hop"
     end,
   },
-
   ["nvim-telescope/telescope-project.nvim"] = {
     after = "telescope.nvim",
     module = "telescope._extensions.project",
@@ -127,7 +113,6 @@ return {
       require("telescope").load_extension "project"
     end,
   },
-
   ["benfowler/telescope-luasnip.nvim"] = {
     after = "telescope.nvim",
     module = "telescope._extensions.luasnip",
@@ -136,8 +121,11 @@ return {
     end,
   },
 
+  -- Navigate around your document
+  -- Move / Swap elements around
   ["ziontee113/syntax-tree-surfer"] = { module = "syntax-tree-surfer" },
 
+  -- Test runner for neovim
   ["klen/nvim-test"] = {
     cmd = {
       "TestSuite",
@@ -152,6 +140,7 @@ return {
     end,
   },
 
+  -- Resolve merge conflicts
   ["akinsho/git-conflict.nvim"] = {
     config = function()
       require("git-conflict").setup(require "user.plugins.git-conflict")

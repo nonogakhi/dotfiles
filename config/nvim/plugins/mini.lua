@@ -12,22 +12,21 @@ return function()
     symbol = "▏",
   }
   require("mini.jump").setup()
+  require("mini.jump2d").setup()
   require("mini.surround").setup()
+  require("mini.trailspace").setup()
   local disable = {
     "base16",
     "completion",
     "cursorword",
     "doc",
     "fuzzy",
-    "jump",
-    "jump2d",
     "misc",
     "pairs",
     "sessions",
     "starter",
     "statusline",
     "tabline",
-    "trailspace",
   }
   for _, plugin in ipairs(disable) do
     vim.g["mini" .. plugin .. "_disable"] = true
