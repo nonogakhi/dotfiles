@@ -3,12 +3,9 @@ return {
 
   cmp = {
     source_priority = {
-      nvim_lsp = 1000,
-      luasnip = 750,
-      emoji = 700,
-      pandoc_references = 700,
-      latex_symbols = 700,
-      calc = 650,
+      luasnip = 1000,
+      nvim_lua = 800,
+      nvim_lsp = 700,
       path = 500,
       buffer = 250,
     },
