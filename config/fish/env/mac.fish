@@ -46,3 +46,6 @@ set -gx STARSHIP_CONFIG ~/.dotfiles/config/starship/starship.toml
 ### Fisher
 #
 set -U fisher_path ~/.dotfiles/config/fish/fisherman
+
+### ZK Notes
+set -gx ZK_NOTEBOOK_DIR ~/personal-notes
