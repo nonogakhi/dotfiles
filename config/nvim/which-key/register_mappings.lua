@@ -4,5 +4,5 @@ end
 
 return {
   n = mode "n",
-  --v = mode "v",
+  v = mode "v",
 }
