@@ -74,45 +74,17 @@ return {
       p = { "<cmd>Telescope project<cr>", "Projects" },
     },
 
-    s = {
-      name = "Surf",
-      s = {
-        function()
-          require("syntax-tree-surfer").select()
-        end,
-        "Surf",
-      },
-      S = {
-        function()
-          require("syntax-tree-surfer").select_current_node()
-        end,
-        "Surf Node",
-      },
-    },
-
     n = {
       name = "Notes",
-      b = {
-        function()
-          require "zk.commands" "ZkBacklinks"()
-        end,
-        "Backlink Picker",
-      },
-      d = {
-        function()
-          require "zk.commands" "ZkCd"()
-        end,
-        "Change Directory",
-      },
       r = {
         function()
-          require "zk.commands" "ZkIndex"()
+          require("zk.commands").get "ZkIndex" {}
         end,
         "Refresh Index",
       },
       l = {
         function()
-          require "zk.commands" "ZkLinks"()
+          require("zk.commands").get "ZkLinks" {}
         end,
         "Link Picker",
       },
@@ -145,6 +117,112 @@ return {
           require("zk.commands").get "ZkTags"()
         end,
         "Tags",
+      },
+      x = { "<Plug>(simple-todo-mark-as-done)", "Mark Done" },
+      X = { "<Plug>(simple-todo-mark-as-undone)", "Mark Undone" },
+    },
+
+    s = {
+      name = "Surf",
+      s = {
+        function()
+          require("syntax-tree-surfer").select()
+        end,
+        "Surf",
+      },
+      S = {
+        function()
+          require("syntax-tree-surfer").select_current_node()
+        end,
+        "Surf Node",
+      },
+    },
+
+    x = {
+      name = "Debugger",
+      b = {
+        function()
+          require("dap").toggle_breakpoint()
+        end,
+        "Toggle Breakpoint",
+      },
+      B = {
+        function()
+          require("dap").clear_breakpoints()
+        end,
+        "Clear Breakpoints",
+      },
+      c = {
+        function()
+          require("dap").continue()
+        end,
+        "Continue",
+      },
+      i = {
+        function()
+          require("dap").step_into()
+        end,
+        "Step Into",
+      },
+      l = {
+        function()
+          require("dapui").float_element "breakpoints"
+        end,
+        "List Breakpoints",
+      },
+      o = {
+        function()
+          require("dap").step_over()
+        end,
+        "Step Over",
+      },
+      q = {
+        function()
+          require("dap").close()
+        end,
+        "Close Session",
+      },
+      Q = {
+        function()
+          require("dap").terminate()
+        end,
+        "Terminate",
+      },
+      r = {
+        function()
+          require("dap").repl.toggle()
+        end,
+        "REPL",
+      },
+      s = {
+        function()
+          require("dapui").float_element "scopes"
+        end,
+        "Scopes",
+      },
+      t = {
+        function()
+          require("dapui").float_element "stacks"
+        end,
+        "Threads",
+      },
+      u = {
+        function()
+          require("dapui").toggle()
+        end,
+        "Toggle Debugger UI",
+      },
+      w = {
+        function()
+          require("dapui").float_element "watches"
+        end,
+        "Watches",
+      },
+      x = {
+        function()
+          require("dap.ui.widgets").hover()
+        end,
+        "Inspect",
       },
     },
   },

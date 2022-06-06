@@ -28,6 +28,7 @@ return {
     "typescript",
     "vim",
     "yaml",
+    "rust",
   },
   matchup = {
     enable = true,

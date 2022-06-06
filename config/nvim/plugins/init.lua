@@ -83,15 +83,29 @@ return {
     end,
   },
 
-  -- plain text note-taking assistant
+  -- Plain text note-taking assistant
   ["mickael-menu/zk-nvim"] = {
     module = { "zk", "zk.commands" },
     config = function()
       require("zk").setup(require "user.plugins.zk")
     end,
   },
+  ["vitalk/vim-simple-todo"] = {
+    keys = {
+      "<Plug>(simple-todo-above)",
+      "<Plug>(simple-todo-below)",
+      "<Plug>(simple-todo-mark-as-done)",
+      "<Plug>(simple-todo-mark-as-undone)",
+      "<Plug>(simple-todo-mark-switch)",
+      "<Plug>(simple-todo-new-list-item)",
+      "<Plug>(simple-todo-new-list-item-start-of-line)",
+    },
+    config = function()
+      vim.g.simple_todo_map_keys = 0 -- disable default key bindings
+    end,
+  },
 
-  -- extensions for telescope.nvim
+  -- Extensions for telescope.nvim
   ["nvim-telescope/telescope-file-browser.nvim"] = {
     after = "telescope.nvim",
     module = "telescope._extensions.file_browser",
@@ -99,9 +113,14 @@ return {
       require("telescope").load_extension "file_browser"
     end,
   },
+  ["nvim-telescope/telescope-media-files.nvim"] = {
+    after = "telescope.nvim",
+    config = function()
+      require("telescope").load_extension "media_files"
+    end,
+  },
   ["nvim-telescope/telescope-hop.nvim"] = {
     after = "telescope.nvim",
-    module = "telescope._extensions.hop",
     config = function()
       require("telescope").load_extension "hop"
     end,
@@ -125,7 +144,76 @@ return {
   -- Move / Swap elements around
   ["ziontee113/syntax-tree-surfer"] = { module = "syntax-tree-surfer" },
 
-  -- Test runner for neovim
+  -- Resolve merge conflicts
+  ["akinsho/git-conflict.nvim"] = {
+    config = function()
+      require("git-conflict").setup(require "user.plugins.git-conflict")
+    end,
+  },
+
+  -- Testing & Debugging
+  ["mfussenegger/nvim-dap"] = {
+    module = "dap",
+    config = require "user.plugins.dap",
+    requires = {
+      {
+        "rcarriga/nvim-dap-ui",
+        after = "nvim-dap",
+        config = require "user.plugins.dapui",
+      },
+      {
+        "theHamsta/nvim-dap-virtual-text",
+        after = "nvim-dap",
+        config = function()
+          require("nvim-dap-virtual-text").setup(require "user.plugins.dap-virtual-text")
+        end,
+      },
+      {
+        "nvim-telescope/telescope-dap.nvim",
+        after = "telescope.nvim",
+        module = "telescope._extensions.dap",
+        config = function()
+          require("telescope").load_extension "dap"
+        end,
+      },
+    },
+  },
+  -- Debug Adapter for Lua
+  ["jbyuki/one-small-step-for-vimkind"] = {
+    requires = { "nvim-dap" },
+    module = "osv",
+  },
+  -- Rust programming
+  ["simrat39/rust-tools.nvim"] = {
+    after = { "nvim-lspconfig" },
+    ft = { "rust" },
+    config = function()
+      require("rust-tools").setup(require "user.plugins.rust-tools")
+    end,
+  },
+  ["Saecki/crates.nvim"] = {
+    event = { "BufRead Cargo.toml" },
+    requires = { "plenary.nvim" },
+    config = function()
+      require("crates").setup(require "user.plugins.crates")
+      astronvim.add_user_cmp_source "crates"
+    end,
+  },
+  -- Flutter programming
+  ["akinsho/flutter-tools.nvim"] = {
+    requires = { "nvim-dap", "plenary.nvim" },
+    config = function()
+      require("flutter-tools").setup(require "user.plugins.flutter-tools")
+    end,
+  },
+  -- Go programming
+  ["ray-x/go.nvim"] = {
+    ft = "go",
+    config = function()
+      require("go").setup(require "user.plugins.go")
+    end,
+  },
+  -- Testing (Rails, Go)
   ["klen/nvim-test"] = {
     cmd = {
       "TestSuite",
@@ -140,10 +228,11 @@ return {
     end,
   },
 
-  -- Resolve merge conflicts
-  ["akinsho/git-conflict.nvim"] = {
+  -- Better quickfix window
+  ["kevinhwang91/nvim-bqf"] = {
+    ft = "qf",
     config = function()
-      require("git-conflict").setup(require "user.plugins.git-conflict")
+      require("bqf").setup()
     end,
   },
 }
