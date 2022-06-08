@@ -185,7 +185,7 @@ return {
   },
   -- Rust programming
   ["simrat39/rust-tools.nvim"] = {
-    after = { "nvim-lspconfig" },
+    after = { "nvim-lsp-installer" },
     ft = { "rust" },
     config = function()
       require("rust-tools").setup(require "user.plugins.rust-tools")
@@ -201,6 +201,7 @@ return {
   },
   -- Flutter programming
   ["akinsho/flutter-tools.nvim"] = {
+    after = { "nvim-lsp-installer" },
     requires = { "nvim-dap", "plenary.nvim" },
     config = function()
       require("flutter-tools").setup(require "user.plugins.flutter-tools")

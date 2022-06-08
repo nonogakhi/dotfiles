@@ -29,6 +29,7 @@ return {
     "vim",
     "yaml",
     "rust",
+    "svelte",
   },
   matchup = {
     enable = true,

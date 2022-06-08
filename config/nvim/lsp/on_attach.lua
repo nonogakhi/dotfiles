@@ -3,7 +3,10 @@ return function(client, bufnr)
     require("sqls").on_attach(client, bufnr)
   end
 
-  if client.name == "solargraph" then
-    client.resolved_capabilities.document_formatting = false
+  if vim.tbl_contains({
+    "solargraph",
+    "gopls",
+  }, client.name) then
+    astronvim.lsp.disable_formatting(client)
   end
 end

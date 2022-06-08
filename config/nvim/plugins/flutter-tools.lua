@@ -8,6 +8,7 @@ return {
     enabled = true,
     run_via_dap = true,
   },
+  flutter_lookup_cmd = "asdf where flutter",
   outline = { auto_open = false },
   decorations = {
     statusline = { device = true, app_version = true },

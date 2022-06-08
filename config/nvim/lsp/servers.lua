@@ -7,7 +7,8 @@ return {
   "gopls", -- Golang
   "pyright", -- Python
   "solargraph", -- Ruby
-  "dartls", -- Flutter
   "sqls", -- Sql
   "rust_analyzer", -- Rust
+  "tailwindcss", -- CSS
+  "svelte", -- Svelte (JS library)
 }
