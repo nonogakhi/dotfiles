@@ -110,3 +110,8 @@ end, { desc = "Dap UI: Close" })
 map("n", "dut", function()
   require("dapui").toggle()
 end, { desc = "Dap UI: Toggle" })
+
+-- telescope-projects
+map("n", "<c-p>", function()
+  require("telescope").extensions.project.project {}
+end)
