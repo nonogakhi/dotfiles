@@ -90,20 +90,6 @@ return {
       require("zk").setup(require "user.plugins.zk")
     end,
   },
-  ["vitalk/vim-simple-todo"] = {
-    keys = {
-      "<Plug>(simple-todo-above)",
-      "<Plug>(simple-todo-below)",
-      "<Plug>(simple-todo-mark-as-done)",
-      "<Plug>(simple-todo-mark-as-undone)",
-      "<Plug>(simple-todo-mark-switch)",
-      "<Plug>(simple-todo-new-list-item)",
-      "<Plug>(simple-todo-new-list-item-start-of-line)",
-    },
-    config = function()
-      vim.g.simple_todo_map_keys = 0 -- disable default key bindings
-    end,
-  },
 
   -- Extensions for telescope.nvim
   ["nvim-telescope/telescope-file-browser.nvim"] = {
@@ -151,7 +137,7 @@ return {
     end,
   },
 
-  -- Testing & Debugging
+  -- Programming, Testing, Debugging
   ["mfussenegger/nvim-dap"] = {
     module = "dap",
     config = require "user.plugins.dap",
@@ -228,12 +214,21 @@ return {
       require("nvim-test").setup(require "user.plugins.nvim-test")
     end,
   },
+  -- sqls language server
+  ["nanotee/sqls.nvim"] = { module = "sqls" },
 
   -- Better quickfix window
   ["kevinhwang91/nvim-bqf"] = {
     ft = "qf",
     config = function()
       require("bqf").setup()
+    end,
+  },
+
+  ["lewis6991/spaceless.nvim"] = {
+    event = "BufEnter",
+    config = function()
+      require("spaceless").setup()
     end,
   },
 }

@@ -12,7 +12,18 @@ if status_ok then
       builtins.formatting.stylua, -- Lua
       builtins.formatting.shfmt, -- Shell
       builtins.formatting.prettierd.with {
-        filetypes = { "javascript", "typescript", "css", "scss", "html", "yaml", "markdown", "json" },
+        filetypes = {
+          "javascript",
+          "typescript",
+          "css",
+          "scss",
+          "html",
+          "yaml",
+          "markdown",
+          "json",
+          "svelte",
+          "toml",
+        },
       },
       -- Linters
       builtins.diagnostics.rubocop, -- Ruby

@@ -1,6 +1,8 @@
 return {
   colorscheme = "duskfox",
 
+  updater = { skip_prompts = true },
+
   cmp = {
     source_priority = {
       luasnip = 1000,

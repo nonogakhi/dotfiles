@@ -44,3 +44,14 @@ utils.augroup("Golang", {
     command = 'silent! lua require("go.format").goimport()',
   },
 })
+
+utils.augroup("__env", {
+  {
+    event = { "BufEnter" },
+    pattern = { ".env" },
+    command = function(args)
+      vim.bo.filetype = ".env"
+      vim.diagnostic.disable(args.buf)
+    end,
+  },
+})

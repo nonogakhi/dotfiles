@@ -118,8 +118,6 @@ return {
         end,
         "Tags",
       },
-      x = { "<Plug>(simple-todo-mark-as-done)", "Mark Done" },
-      X = { "<Plug>(simple-todo-mark-as-undone)", "Mark Undone" },
     },
 
     s = {
