@@ -16,10 +16,14 @@ fish_add_path /usr/local/opt/python/libexec/bin:$PATH
 #
 fish_add_path "/usr/local/opt/openssl/bin:$PATH"
 
+### Neovim
+#
+set -gx PATH "$HOME/neovim/bin" $PATH
+
 ### Editor
 #
-set -gx EDITOR "nvim"
-set -gx GIT_EDITOR "nvim"
+set -gx EDITOR nvim
+set -gx GIT_EDITOR nvim
 
 ### Fzf
 #
@@ -37,7 +41,7 @@ set -gx YABAI_CERT yabai-cert
 
 ### Bat
 #
-set -gx BAT_THEME "TwoDark"
+set -gx BAT_THEME TwoDark
 
 ### Starship
 #
@@ -47,5 +51,16 @@ set -gx STARSHIP_CONFIG ~/.dotfiles/config/starship/starship.toml
 #
 set -U fisher_path ~/.dotfiles/config/fish/fisherman
 
+### Fish shell
+#
+set -U fish_greeting # remove greeting message
+
 ### ZK Notes
 set -gx ZK_NOTEBOOK_DIR ~/personal-notes
+
+### Rust
+#
+set -gx RUST_WITHOUT rust-docs
+
+### Neovim
+set -gx NVIM_COLORSCHEME kanagawa
