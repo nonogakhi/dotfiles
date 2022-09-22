@@ -5,39 +5,38 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
 yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
-yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
 
 # global settings
-yabai -m config window_border              on
-yabai -m config mouse_follows_focus        off
-yabai -m config focus_follows_mouse        off
-yabai -m config window_placement           second_child
-yabai -m config window_topmost             off
-yabai -m config window_shadow              float
-yabai -m config window_opacity             on
-yabai -m config active_window_opacity      1.0
-yabai -m config normal_window_opacity      0.95
-yabai -m config window_border_width        3
+yabai -m config window_border on
+yabai -m config mouse_follows_focus off
+yabai -m config focus_follows_mouse off
+yabai -m config window_placement second_child
+yabai -m config window_topmost off
+yabai -m config window_shadow float
+yabai -m config window_opacity on
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.95
+yabai -m config window_border_width 3
 yabai -m config active_window_border_color 0xff9dd274 # 0x99ecf0c1
 yabai -m config normal_window_border_color 0xff555555 # 0x99555555
-yabai -m config insert_feedback_color      0xff9dd274 # 0x99FF4250
-yabai -m config split_ratio                0.50
-yabai -m config auto_balance               off
-yabai -m config mouse_modifier             fn
-yabai -m config mouse_action1              move
-yabai -m config mouse_action2              resize
-yabai -m config mouse_drop_action          swap
+yabai -m config insert_feedback_color 0xff9dd274      # 0x99FF4250
+yabai -m config split_ratio 0.50
+yabai -m config auto_balance off
+yabai -m config mouse_modifier fn
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m config mouse_drop_action swap
 
 # general space settings
-yabai -m config layout                     bsp
-yabai -m config top_padding                7
-yabai -m config bottom_padding             7
-yabai -m config left_padding               7
-yabai -m config right_padding              7
-yabai -m config window_gap                 7
+yabai -m config layout bsp
+yabai -m config top_padding 7
+yabai -m config bottom_padding 7
+yabai -m config left_padding 7
+yabai -m config right_padding 7
+yabai -m config window_gap 7
 
 # menu status bar (simple-bar)
-yabai -m config external_bar               all:30:0
+yabai -m config external_bar all:30:0
 
 ## spaces managements
 # naming
@@ -110,5 +109,19 @@ yabai -m rule --add label="About This Mac" app="System Information" title="About
 yabai -m rule --add app="^Archive Utility$" manage=off space=misc
 yabai -m rule --add app="^Photo Booth$" manage=off space=misc
 yabai -m rule --add app="^QuickTime Player$" manage=off space=misc
+
+## Settings For Simple-Bar
+# Refresh spaces widget on space change
+yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+# Refresh spaces widget on display focus change
+yabai -m signal --add event=display_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+# Refresh spaces widget on window resize
+yabai -m signal --add event=window_resized action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+# Refresh spaces widget on when focused application changes
+yabai -m signal --add event=window_focused action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+# Refresh spaces widget on when focused application changes
+yabai -m signal --add event=application_front_switched action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+# Refresh spaces widget on when an application window is closed
+yabai -m signal --add event=window_destroyed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
 
 echo "yabai configuration loaded.."
