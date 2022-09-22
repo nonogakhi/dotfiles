@@ -1,58 +1,68 @@
 local wezterm = require("wezterm")
+local custom = require("colors.custom")
+local kanagawa = require("colors.kanagawa")
+require("config.right-status").setup()
+require("config.notify").setup()
+require("config.tab-title").setup()
+
+local font_name = "JetBrains Mono"
+
+local function font(name, params)
+   return wezterm.font(name, params)
+end
 
 return {
-	-- Appearance
-	color_scheme = "Duskfox",
-	window_background_opacity = 0.9,
-
-	-- Font
+	-- font
 	font = wezterm.font_with_fallback({
 		"JetBrains Mono",
 		"nonicons",
 	}),
 	font_size = 14.0,
 
-	-- Tabs/Panes
+  -- colorscheme
+  colors = kanagawa,
+
+  -- scroll bar
+  enable_scroll_bar = true,
+
+  -- status
+  status_update_interval = 1000,
+
+	-- tabs/panes
 	hide_tab_bar_if_only_one_tab = false,
+  enable_tab_bar = true,
+  use_fancy_tab_bar = false,
+  tab_max_width = 25,
+  show_tab_index_in_tab_bar = false,
+  switch_to_last_active_tab_when_closing_tab = true,
 
-	-- Tab bar appearnace
-	colors = {
-		indexed = {
-			[16] = "#F8BD96",
-			[17] = "#F5E0DC",
-		},
+  -- window
+   window_padding = {
+      left = 5,
+      right = 10,
+      top = 12,
+      bottom = 12,
+   },
+   automatically_reload_config = true,
+   inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 },
+   window_background_opacity = 1.0,
+   window_close_confirmation = "NeverPrompt",
+   window_frame = {
+      active_titlebar_bg = "#090909",
+      font = font(font_name, { bold = true }),
+      font_size = 9,
+   },
 
-		scrollbar_thumb = "#575268",
-		split = "#161320",
+  -- mousebindings
+   mouse_bindings = {
+      -- Ctrl-click will open the link under the mouse cursor
+      {
+         event = { Up = { streak = 1, button = "Left" } },
+         mods = "CTRL",
+         action = wezterm.action.OpenLinkAtMouseCursor,
+      },
+   },
 
-		tab_bar = {
-			background = "#1E1E2E",
-			active_tab = {
-				bg_color = "#575268",
-				fg_color = "#F5C2E7",
-			},
-			inactive_tab = {
-				bg_color = "#1E1E2E",
-				fg_color = "#D9E0EE",
-			},
-			inactive_tab_hover = {
-				bg_color = "#575268",
-				fg_color = "#D9E0EE",
-			},
-			new_tab = {
-				bg_color = "#15121C",
-				fg_color = "#6E6C7C",
-			},
-			new_tab_hover = {
-				bg_color = "#575268",
-				fg_color = "#D9E0EE",
-				italic = true,
-			},
-		},
-
-		visual_bell = "#302D41",
-
-		-- nightbuild only
-		compose_cursor = "#F8BD96",
-	},
+  -- others
+  force_reverse_video_cursor = true,
 }
