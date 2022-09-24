@@ -2,7 +2,6 @@
 #
 alias cat='bat --paging=never'
 alias c='clear'
-alias ls='exa --long --header'
 
 ### Fish utilities
 #

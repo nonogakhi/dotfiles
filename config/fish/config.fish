@@ -1,9 +1,14 @@
-if status is-interactive
-  # Commands to run in interactive sessions can go here
-end
+set fish_greeting ""
+set -gx TERM xterm-256color
 
-starship init fish | source
+source ~/.dotfiles/config/fish/alias/init.fish # alias
+source ~/.dotfiles/config/fish/functions/init.fish # function
 
-function fish_greeting
-  cutefetch $(printf %b '-k\n-b\n-p' | shuf -n 1) $(shuf -i 1-13 -n 1)
+switch (uname)
+    case Darwin
+        source (dirname (status --current-filename))/config-osx.fish
+    case Linux
+        source (dirname (status --current-filename))/config-linux.fish
+    case '*'
+        source (dirname (status --current-filename))/config-windows.fish
 end

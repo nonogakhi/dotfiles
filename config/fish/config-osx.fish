@@ -1,24 +1,12 @@
-# Environment variables
-
-# You may need to manually set your language environment
 set -gx LANG en_US.UTF-8
 set -gx LC_ALL en_US.UTF-8
 
-### Homebrew's sbin
+### PATH
 #
-fish_add_path "/usr/local/sbin:$PATH"
-
-### Python
-#
-fish_add_path /usr/local/opt/python/libexec/bin:$PATH
-
-### OpenSSL
-#
-fish_add_path "/usr/local/opt/openssl/bin:$PATH"
-
-### Neovim
-#
-set -gx PATH "$HOME/neovim/bin" $PATH
+set -gx PATH /usr/local/sbin $PATH
+set -gx PATH /usr/local/opt/python/libexec/bin $PATH # python
+set -gx PATH /usr/local/opt/openssl/bin $PATH # openssl
+set -gx PATH ~/neovim/bin $PATH # neovim
 
 ### Editor
 #
@@ -43,17 +31,9 @@ set -gx YABAI_CERT yabai-cert
 #
 set -gx BAT_THEME TwoDark
 
-### Starship
-#
-set -gx STARSHIP_CONFIG ~/.dotfiles/config/starship/starship.toml
-
-### Fisher
-#
-set -U fisher_path ~/.dotfiles/config/fish/fisherman
-
-### Fish shell
-#
-set -U fish_greeting # remove greeting message
+# ### Fisher
+# #
+# set -U fisher_path ~/.dotfiles/config/fish/fisherman
 
 ### ZK Notes
 set -gx ZK_NOTEBOOK_DIR ~/personal-notes
@@ -62,5 +42,5 @@ set -gx ZK_NOTEBOOK_DIR ~/personal-notes
 #
 set -gx RUST_WITHOUT rust-docs
 
-### Neovim
+### Neovim colorsheme
 set -gx NVIM_COLORSCHEME kanagawa
